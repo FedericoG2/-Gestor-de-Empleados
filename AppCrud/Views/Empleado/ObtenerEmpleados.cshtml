@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<AppCrud.Models.Empleado>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Empleados</title>
+</head>
+<body>
+    <h1>Lista de Empleados</h1>
+    <p><a href="@Url.Action("CrearEmpleado")">Agregar Nuevo Empleado</a></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Fecha de Contrato</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.Email</td>
+                    <td>@empleado.FechaContrato</td>
+                    <td>@empleado.Activo</td>
+                    <td>
+                        <a href="@Url.Action("EditarEmpleado", new { id = empleado.IdEmpleado })">Editar</a> |
+                        <a href="@Url.Action("EliminarEmpleado", new { id = empleado.IdEmpleado })">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
