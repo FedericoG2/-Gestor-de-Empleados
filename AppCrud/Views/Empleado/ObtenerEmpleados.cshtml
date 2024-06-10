@@ -9,35 +9,40 @@
 <html>
 <head>
     <title>Lista de Empleados</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-    <h1>Lista de Empleados</h1>
-    <p><a href="@Url.Action("CrearEmpleado")">Nuevo Empleado</a></p>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Fecha de Contrato</th>
-                <th>Activo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var empleado in Model)
-            {
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Empleados</h1>
+        <a href="@Url.Action("CrearEmpleado")" class="btn btn-primary mb-3">Nuevo Empleado</a>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>@empleado.Nombre</td>
-                    <td>@empleado.Email</td>
-                    <td>@empleado.FechaContrato</td>
-                    <td>@empleado.Activo</td>
-                    <td>
-                        <a href="@Url.Action("EditarEmpleado", new { id = empleado.IdEmpleado })">Editar</a> |
-                        <a href="@Url.Action("EliminarEmpleado", new { id = empleado.IdEmpleado })">Eliminar</a>
-                    </td>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Fecha de Contrato</th>
+                    <th>Activo</th>
+                    <th>Acciones</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var empleado in Model)
+                {
+                    <tr>
+                        <td>@empleado.Nombre</td>
+                        <td>@empleado.Email</td>
+                        <td>@empleado.FechaContrato.ToString("yyyy-MM-dd")</td>
+                        <td>@(empleado.Activo ? "Sí" : "No")</td>
+                        <td>
+                            <a href="@Url.Action("EditarEmpleado", new { id = empleado.IdEmpleado })" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="@Url.Action("EliminarEmpleado", new { id = empleado.IdEmpleado })" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

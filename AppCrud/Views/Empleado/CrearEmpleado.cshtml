@@ -9,31 +9,37 @@
 <html>
 <head>
     <title>Crear Nuevo Empleado</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-    <h1>Crear Nuevo Empleado</h1>
-    <form asp-action="CrearEmpleado" method="post">
-        <div>
-            <label>Nombre</label>
-            <input asp-for="Nombre" />
-            <span asp-validation-for="Nombre"></span>
-        </div>
-        <div>
-            <label>Email</label>
-            <input asp-for="Email" />
-            <span asp-validation-for="Email"></span>
-        </div>
-        <div>
-            <label>Fecha de Contrato</label>
-            <input asp-for="FechaContrato" />
-            <span asp-validation-for="FechaContrato"></span>
-        </div>
-        <div>
-            <label>Activo</label>
-            <input asp-for="Activo" type="checkbox" />
-            <span asp-validation-for="Activo"></span>
-        </div>
-        <button type="submit">Guardar</button>
-    </form>
+    <div class="container mt-5">
+        <h1 class="mb-4">Crear Nuevo Empleado</h1>
+        <form asp-action="CrearEmpleado" method="post">
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="FechaContrato" class="form-label">Fecha de Contrato</label>
+                <input asp-for="FechaContrato" class="form-control" type="date" />
+                <span asp-validation-for="FechaContrato" class="text-danger"></span>
+            </div>
+            <div class="mb-3 form-check">
+                <input asp-for="Activo" class="form-check-input" type="checkbox" />
+                <label asp-for="Activo" class="form-check-label">Activo</label>
+                <span asp-validation-for="Activo" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
