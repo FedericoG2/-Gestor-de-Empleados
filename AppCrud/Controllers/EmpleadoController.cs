@@ -16,7 +16,7 @@ namespace AppCrud.Controllers
         }
 
 
-        // GET: Empleado
+        // GET: Empleado. Se ejecuta al iniciar la aplicacion y obtiene una lista de empleados.
         [HttpGet]
         public async Task<IActionResult> ObtenerEmpleados()
         {
@@ -25,14 +25,14 @@ namespace AppCrud.Controllers
         }
 
 
-        // GET: Empleado/Nuevo
+        // GET: Empleado/CrearEmpleado. Metodo que devuelve el formulario para crear el empleado
         [HttpGet]
         public IActionResult CrearEmpleado()
         {
             return View();
         }
 
-        // POST: Empleado/Nuevo
+        // POST: Empleado/CrearEmpleado. Metodo que crea el empleado y redirecciona a la lista
         [HttpPost]
         public async Task<IActionResult> CrearEmpleado(Empleado empleado)
         {
@@ -45,7 +45,7 @@ namespace AppCrud.Controllers
             return View(empleado);
         }
 
-        // GET: Empleado/Editar/5
+        // GET: Empleado/EditarEmpleado/id. Metodo que devuelve el formulario para editar el empleado seleccionado
         [HttpGet]
         public async Task<IActionResult> EditarEmpleado(int id)
         {
@@ -57,7 +57,7 @@ namespace AppCrud.Controllers
             return View(empleado);
         }
 
-        // POST: Empleado/Editar/5
+        // POST: Empleado/EditarEmpleado/id. Metodo que edita el empleado
         [HttpPost]
         public async Task<IActionResult> EditarEmpleado(int id, Empleado empleado)
         {
@@ -75,7 +75,7 @@ namespace AppCrud.Controllers
             return View(empleado);
         }
 
-        // GET: Empleado/Eliminar/5
+        // GET: Empleado/EliminarEmpleado/id. Metodo que devuelve el formulario para eliminar el empleado seleccionado
         [HttpGet]
         public async Task<IActionResult> EliminarEmpleado(int id)
         {
@@ -88,7 +88,7 @@ namespace AppCrud.Controllers
         }
 
 
-        // POST: Empleado/Eliminar/5
+        // POST: Empleado/EliminarEmpleado/id. Metodo que elimina el empleado.
         [HttpPost, ActionName("EliminarEmpleado")]
         public async Task<IActionResult> ConfirmarEliminarEmpleado(int id)
         {

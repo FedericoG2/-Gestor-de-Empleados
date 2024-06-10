@@ -7,6 +7,7 @@ namespace AppCrud.Data
     {
         public AppDBContext(DbContextOptions<AppDBContext> options): base (options){ }
         public DbSet<Empleado> Empleados { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
