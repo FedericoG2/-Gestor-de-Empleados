@@ -3,3 +3,37 @@
 *@
 @{
 }
+@model AppCrud.Models.Empleado
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Nuevo Empleado</title>
+</head>
+<body>
+    <h1>Crear Nuevo Empleado</h1>
+    <form asp-action="CrearEmpleado" method="post">
+        <div>
+            <label>Nombre</label>
+            <input asp-for="Nombre" />
+            <span asp-validation-for="Nombre"></span>
+        </div>
+        <div>
+            <label>Email</label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label>Fecha de Contrato</label>
+            <input asp-for="FechaContrato" />
+            <span asp-validation-for="FechaContrato"></span>
+        </div>
+        <div>
+            <label>Activo</label>
+            <input asp-for="Activo" type="checkbox" />
+            <span asp-validation-for="Activo"></span>
+        </div>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
