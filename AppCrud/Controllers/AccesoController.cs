@@ -15,11 +15,6 @@ namespace AppCrud.Controllers
             _context = context;
         }
 
-        // GET: Acceso/Registro Vista formulario registro.
-        public IActionResult Registro()
-        {
-            return View();
-        }
 
         // GET: Acceso/Login Vista formulario inicio de sesion.
         public IActionResult Login()

@@ -1,48 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model IEnumerable<AppCrud.Models.Empleado>
+﻿@model IEnumerable<AppCrud.Models.Empleado>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Empleados</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Lista de Empleados</h1>
-        <a href="@Url.Action("CrearEmpleado")" class="btn btn-primary mb-3">Nuevo Empleado</a>
-        <table class="table table-striped">
-            <thead>
+@{
+    ViewData["Title"] = "Lista de Empleados";
+}
+
+<style>
+    /* Estilos personalizados */
+    body {
+        background-color: #ffffff; /* Fondo blanco */
+    }
+
+    .list-container {
+        background-color: #ffffff; /* Fondo blanco */
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+        .list-container table {
+            background-color: #ffffff; /* Fondo blanco */
+            color: #000000; /* Texto negro */
+        }
+</style>
+
+<div class="container list-container">
+    <h1 class="mb-4">Lista de Empleados</h1>
+    <a href="@Url.Action("CrearEmpleado")" class="btn btn-success mb-3">Nuevo Empleado</a>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Fecha de Contrato</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
                 <tr>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Fecha de Contrato</th>
-                    <th>Activo</th>
-                    <th>Acciones</th>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.Email</td>
+                    <td>@empleado.FechaContrato.ToString("yyyy-MM-dd")</td>
+                    <td>@(empleado.Activo ? "Sí" : "No")</td>
+                    <td>
+                        <a href="@Url.Action("EditarEmpleado", new { id = empleado.IdEmpleado })" class="btn btn-sm btn-success">Editar</a>
+                        <a href="@Url.Action("EliminarEmpleado", new { id = empleado.IdEmpleado })" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var empleado in Model)
-                {
-                    <tr>
-                        <td>@empleado.Nombre</td>
-                        <td>@empleado.Email</td>
-                        <td>@empleado.FechaContrato.ToString("yyyy-MM-dd")</td>
-                        <td>@(empleado.Activo ? "Sí" : "No")</td>
-                        <td>
-                            <a href="@Url.Action("EditarEmpleado", new { id = empleado.IdEmpleado })" class="btn btn-sm btn-warning">Editar</a>
-                            <a href="@Url.Action("EliminarEmpleado", new { id = empleado.IdEmpleado })" class="btn btn-sm btn-danger">Eliminar</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+            }
+        </tbody>
+    </table>
+</div>
